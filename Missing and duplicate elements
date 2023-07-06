@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+
+pair<int,int> missingAndRepeating(vector<int> &arr, int n)
+{
+	// Write your code here 
+	sort(arr.begin(),arr.end());
+	int miss = -1;
+	int repeat = -1;
+	for(int i = 1; i<arr.size(); i++){
+		if(arr[i]==arr[i-1]){
+			repeat = arr[i];
+			break;
+		}
+	}
+	int sum = 0;
+	int actualsum = n*(n+1)/2;
+	for(auto itr : arr){
+		sum += itr;
+	}
+	miss = actualsum - (sum-repeat);
+	pair<int, int> ans;
+	ans = make_pair(miss,repeat);
+	return ans;
+	
+}
